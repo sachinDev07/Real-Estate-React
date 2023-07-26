@@ -1,9 +1,17 @@
 import { useState } from "react";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { auth } from "../config/firebase";
+import { db } from "../config/firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+
 import OAuth from "../components/OAuth";
+import { toast } from "react-toastify";
 
 const SignUP = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -17,6 +25,34 @@ const SignUP = () => {
       ...prevState,
       [e.target.id]: e.target.value,
     }));
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      const user = userCredential.user;
+      // for not storing password data on the database...
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp(); // for storing timestamp of the user's registered time...
+
+      setDoc(doc(db, "users", user.uid), formDataCopy);
+
+      // toast.success("Sign up was successful!")
+      navigate("/");
+    } catch (error) {
+      toast.error("Something went wrong with the registration");
+    }
   };
 
   return (
@@ -33,7 +69,7 @@ const SignUP = () => {
           />
         </div>
         <div className="w-full md:w-[67%] lg:w-[40%] lg:ml-20">
-          <form>
+          <form onSubmit={onSubmit}>
             <input
               type="text"
               value={name}
