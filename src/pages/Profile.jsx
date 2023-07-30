@@ -8,8 +8,8 @@ import { doc, updateDoc } from "firebase/firestore";
 const Profile = () => {
   const [changeDetails, setChangeDetails] = useState(false);
   const [formData, setFormData] = useState({
-    name: "Sachin kumar",
-    email: "sachin123@gmail.com",
+    name: auth.currentUser.displayName,
+    email: auth.currentUser.email,
   });
   const { name, email } = formData;
   const navigate = useNavigate();
