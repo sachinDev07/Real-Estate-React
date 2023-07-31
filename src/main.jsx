@@ -10,6 +10,7 @@ import SignUp from "./pages/SignUp.jsx";
 import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Offer from "./pages/Offer.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import CreateListing from "./pages/CreateListing.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/offer",
         element: <Offer />,
+      },
+      {
+        path: "/create-listing",
+        element: <CreateListing />,
       },
     ],
   },
