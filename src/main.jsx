@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/ForgotPassword.jsx";
 import Offer from "./pages/Offer.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import CreateListing from "./pages/CreateListing.jsx";
+import Category from "./pages/Category.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        element: <ProtectedRoute element={<Profile />} />,
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/sign-in",
@@ -43,7 +48,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/create-listing",
-        element: <CreateListing />,
+        element: (
+          <ProtectedRoute>
+            <CreateListing />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/category/:categoryName/:listingId",
+        element: <Category />
       },
     ],
   },
