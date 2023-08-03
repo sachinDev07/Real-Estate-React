@@ -367,7 +367,7 @@ const CreateListing = () => {
                 onChange={onChange}
                 min="50"
                 max="40000000"
-                className="w-full px-4 py-2 text-gray-700 text-xl border border-gray-300 bg-white rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white bg-white focus:border-slate-600 text-center"
+                className="w-full px-4 py-2 text-gray-700 text-xl border border-gray-300 bg-white rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
               />
               {type === "rent" && (
                 <div>
@@ -389,7 +389,7 @@ const CreateListing = () => {
                   onChange={onChange}
                   min="50"
                   max="40000000"
-                  className="w-full px-4 py-2 text-gray-700 text-xl border border-gray-300 bg-white rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white bg-white focus:border-slate-600 text-center"
+                  className="w-full px-4 py-2 text-gray-700 text-xl border border-gray-300 bg-white rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
                 />
                 {type === "rent" && (
                   <div>
