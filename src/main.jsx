@@ -12,6 +12,7 @@ import Offer from "./pages/Offer.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import CreateListing from "./pages/CreateListing.jsx";
 import Category from "./pages/Category.jsx";
+import EditListing from "./pages/EditListing.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,14 @@ const router = createBrowserRouter([
       {
         path: "/category/:categoryName/:listingId",
         element: <Category />
+      },
+      {
+        path: "/edit-listing/:listingID",
+        element: (
+          <ProtectedRoute>
+            <EditListing />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
