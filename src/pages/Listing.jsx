@@ -13,6 +13,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 
 import Spinner from "../components/Spinner";
+import Contact from "../components/Contact";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -147,7 +148,9 @@ const Listing = () => {
             <Contact userRef={listing.userRef} listing={listing} />
           )}
         </div>
-        <div className="w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden"></div>
+        <div className="w-full h-[200px] md:h-[400px] z-10 overflow-x-hidden">
+
+        </div>
       </div>
     </main>
   );
