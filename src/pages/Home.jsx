@@ -100,7 +100,7 @@ const Home = () => {
         });
         setSaleListings(listings);
       } catch (error) {
-        console.log(listings);
+        console.log(error);
       }
     }
     fetchListings();
